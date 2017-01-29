@@ -4,7 +4,7 @@
 	
 
    
-	<div class="col-lg-12 col-sm-12 formulario centered">
+	<div class="col-lg-12 col-sm-12 formulario">
 		<div class="col-lg-6 col-sm-12  col-lg-offset-3  centered">		
 			<h1>MatrixLogic</h1>
 			<div class="panel panel-default">

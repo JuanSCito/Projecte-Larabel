@@ -1,6 +1,7 @@
 
   <style>
 
+
       /*ESTILOS MASTER BLADE*/
       @font-face {
         font-family: matrix;
@@ -37,7 +38,6 @@
       .formulario h1 {
         text-align: center;
         font-size: 60px;
-        font-weight: thin;
         letter-spacing: 0.6em;
         overflow-wrap:break-word;
       }
@@ -159,7 +159,7 @@
           <a href="{{url('/')}}">Home</a>
         </li>
         <li {{ Request::is('chat/show')? ' class=active':''}}>
-          <a  href="{{url('/chat/show')}}">CHAT</a>
+          <a  href="{{url('/chat')}}">CHAT</a>
         </li>
         <li {{ Request::is('chat/crear') ? ' class=active' : ''}}>
             <a href="{{url('/chat/crear')}}">Crear chat</a>
