@@ -106,7 +106,7 @@
       .chat .panel.panel-default{
         background: transparent;
         padding: 20px;
-        border: 1px solid #0F0;;
+        border: 1px solid #0F0;
       }
 
       .chat input{
@@ -130,11 +130,18 @@
       .lista-chats {
         height: 430px;
         background: rgba(0,255,0,0.2);
+        height:0;
       }
       .chat .respuesta {
          height: 430px;
          background: rgba(0,255,0,0.2);
+         overflow-y: scroll;
+         
+
       }
+      
+     
+
         .chat-boton {
           padding: 22px;
 
@@ -144,11 +151,30 @@
 
          padding-left:0;
          margin-bottom: 10px;
+
        }
 
        .textarea-boton {
 
           padding-left:0;
+       }
+
+       .fa.fa-arrow-down {
+       
+          color:#0F0;
+          font-size: 20px;
+          text-align: right;
+          padding: 5px;
+          background: rgba(0,255,0,0.2);
+          cursor: pointer;
+          box-shadow: 1px 1px 5px #888;
+          margin-left: 20px;
+
+       }
+       .fa.fa-arrow-down:hover {
+       
+         /* border: 0.5px solid #0F0;*/
+
        }
 
 
