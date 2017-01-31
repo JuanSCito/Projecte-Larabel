@@ -135,6 +135,22 @@
          height: 430px;
          background: rgba(0,255,0,0.2);
       }
+        .chat-boton {
+          padding: 22px;
+
+       }
+
+       .textarea {
+
+         padding-left:0;
+         margin-bottom: 10px;
+       }
+
+       .textarea-boton {
+
+          padding-left:0;
+       }
+
 
       /*PÁGINA CHAT INDEX*/
 
