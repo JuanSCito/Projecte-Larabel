@@ -142,6 +142,7 @@
          background: rgba(0,255,0,0.2);
          overflow-y: scroll;
          display: none;
+         margin-bottom: 10px;
          
 
       }
@@ -150,6 +151,7 @@
 
         .chat-boton {
           padding: 22px;
+          margin-left: 10px;
 
        }
 
@@ -174,7 +176,7 @@
           background: rgba(0,255,0,0.2);
           cursor: pointer;
           box-shadow: 1px 1px 5px #888;
-          margin-left: 55%;
+          margin-left: 54%;
           
 
 
@@ -188,6 +190,8 @@
       .titulo {
          background: rgba(55,71,79,0.8);
          width: 100%;
+         padding: 4px;
+       
       }
 
 
