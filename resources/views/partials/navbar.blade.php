@@ -128,14 +128,20 @@
        
       }
       .lista-chats {
-        height: 430px;
+        
         background: rgba(0,255,0,0.2);
-        height:0;
+        transition: height 1s;
+        height: 1px;
+        display: none;
+       
+
       }
+      
       .chat .respuesta {
          height: 430px;
          background: rgba(0,255,0,0.2);
          overflow-y: scroll;
+         display: none;
          
 
       }
@@ -168,14 +174,21 @@
           background: rgba(0,255,0,0.2);
           cursor: pointer;
           box-shadow: 1px 1px 5px #888;
-          margin-left: 20px;
+          margin-left: 55%;
+          
+
 
        }
        .fa.fa-arrow-down:hover {
        
          /* border: 0.5px solid #0F0;*/
+         background: rgba(0,255,255,0.2);
 
        }
+      .titulo {
+         background: rgba(55,71,79,0.8);
+         width: 100%;
+      }
 
 
       /*PÁGINA CHAT INDEX*/

@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Bootstrap 101 Template</title>
 
-    
+
 
     <!-- Bootstrap -->
     <link href="{{ url('/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -22,8 +22,9 @@
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <style>
-    
+   
     </style>
+
    
   </head>
   <body>
@@ -43,6 +44,15 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{ url('/assets/bootstrap/js/bootstrap.min.js') }} "></script>
   
+    </script>
+    <script>
+      
+        $(document).ready(function() {
+            
+          $("#respuesta").fadeIn("slow");
+    
+   
+      });
     </script>
 
   </body>
