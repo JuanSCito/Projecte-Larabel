@@ -133,12 +133,15 @@
         background: rgba(0,255,0,0.2);
         transition: height 1s;
         position: relative;
-
-        
-        
-       
+        /*height: 0;
+        display: none;*/
 
       }
+       
+       .lista-chats-view  {
+          display: none;
+         
+       }
       
       .chat .respuesta {
          height: 430px;
@@ -196,7 +199,9 @@
          padding: 4px;
        
       }
-
+      .joker {
+          width: 100%;
+      }
 
       /*PÁGINA CHAT INDEX*/
 

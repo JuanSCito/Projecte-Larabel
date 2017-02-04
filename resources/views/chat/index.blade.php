@@ -7,13 +7,28 @@
 				<div class="col-lg-3 col-md-4 col-sm-12  centered">	
 					<div>
 						
-						  <img src="{{ url('/images/joker.png') }}" alt="">
+						  <img src="{{ url('/images/joker.png') }}" alt="" class="joker center-block">
 
 					</div>	
 					<div  >
 						  <label for="comment" class="titulo" >Chats: <i class="fa fa-arrow-down" id="boton" aria-hidden="true"  onclick="desplegar('users','boton')" onmouseup="presionar('boton')" onmousedown="despresionar('boton')" ></i>
 						  </label>
-						  <div class="lista-chats" id="users"></div>
+						  <div class="lista-chats" id="users">
+						  	 
+								<div id="listado">
+								@foreach( $arrayChats as $key => $chat )
+									<p>{{$chat->name}}</p>
+									@endforeach
+
+								</div>
+								
+
+
+
+
+						   	  
+
+						  </div>
 
 					</div>
 					<!--class="form-group"-->
@@ -24,22 +39,15 @@
 					</div>	
 					
 				</div>
-				<div class="col-lg-9 col-md-8 col-sm-12   centered">
+				<div class="col-lg-9 col-md-8 col-sm-12  centered">
 					<form action="">
 						 <div class="form-group">
 						  <label for="" class="titulo">Conversacion:</label>
-						  <div class="respuesta" id="respuesta" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat provident cum laborum alias dolorum praesentium officia impedit voluptatibus neque, quo error voluptas, sequi vero ipsa distinctio eos qui natus accusantium!<br>
-						  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat provident cum laborum alias dolorum praesentium officia impedit voluptatibus neque, quo error voluptas, sequi vero ipsa distinctio eos qui natus accusantium!<br>
-						  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat provident cum laborum alias dolorum praesentium officia impedit voluptatibus neque, quo error voluptas, sequi vero ipsa distinctio eos qui natus accusantium!<br>
-						  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat provident cum laborum alias dolorum praesentium officia impedit voluptatibus neque, quo error voluptas, sequi vero ipsa distinctio eos qui natus accusantium!<br>
-						  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat provident cum laborum alias dolorum praesentium officia impedit voluptatibus neque, quo error voluptas, sequi vero ipsa distinctio eos qui natus accusantium!<br>
-						  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat provident cum laborum alias dolorum praesentium officia impedit voluptatibus neque, quo error voluptas, sequi vero ipsa distinctio eos qui natus accusantium!<br>
-						  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat provident cum laborum alias dolorum praesentium officia impedit voluptatibus neque, quo error voluptas, sequi vero ipsa distinctio eos qui natus accusantium!<br>
-						  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat provident cum laborum alias dolorum praesentium officia impedit voluptatibus neque, quo error voluptas, sequi vero ipsa distinctio eos qui natus accusantium!<br>
-						  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat provident cum laborum alias dolorum praesentium officia impedit voluptatibus neque, quo error voluptas, sequi vero ipsa distinctio eos qui natus accusantium!<br>
-						  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat provident cum laborum alias dolorum praesentium officia impedit voluptatibus neque, quo error voluptas, sequi vero ipsa distinctio eos qui natus accusantium!<br>
-						  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat provident cum laborum alias dolorum praesentium officia impedit voluptatibus neque, quo error voluptas, sequi vero ipsa distinctio eos qui natus accusantium!<br>
-						  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat provident cum laborum alias dolorum praesentium officia impedit voluptatibus neque, quo error voluptas, sequi vero ipsa distinctio eos qui natus accusantium!<br>
+						  <div class="respuesta" id="respuesta" >
+							@foreach( $arrayMesage as $key => $mesage )
+									<p>{{$mesage->text}}</p>
+							@endforeach
+						  
 						 </div>
 
 						 <div class="form-group">
@@ -62,7 +70,7 @@
 	<script>
 
   
-	
+	$( '#listado' ).fadeOut('fast');
 	function desplegar(users,boton){
 		
 		//alert(users);
@@ -76,14 +84,25 @@
 		user.style.transition = "height 1s";
 		if(altura_users!=0){
 			user.style.height= 0;
+			
+			if(user.id=="users"){
+				//document.getElementById('listado').className += " lista-chats-view";
+				$( '#listado' ).fadeOut('fast');
+			}else{
+
+			}
 
 					
 		}else{
 			
 			if(user.id=="users"){
 				document.getElementById('users2').style.height= 0;
+				$( '#listado' ).fadeIn('fast');
+				//document.getElementById('users2').style.display= 'none';
 			}else{
 				document.getElementById('users').style.height= 0;
+				$( '#listado' ).fadeOut('fast');
+				//document.getElementById('users2').style.display= 'none';
 
 			}
 			user.style.height= altura;
