@@ -133,6 +133,7 @@
         background: rgba(0,255,0,0.2);
         transition: height 1s;
         position: relative;
+        overflow-y: auto;
         /*height: 0;
         display: none;*/
 

@@ -21,13 +21,6 @@
 									@endforeach
 
 								</div>
-								
-
-
-
-
-						   	  
-
 						  </div>
 
 					</div>
@@ -73,45 +66,33 @@
 	$( '#listado' ).fadeOut('fast');
 	function desplegar(users,boton){
 		
-		//alert(users);
-		var user = document.getElementById(users);
 
-		 var altura = document.getElementById("respuesta").offsetHeight/2+"px";
-		 //user.style.transition = 'all 1s';
-		 altura_users = document.getElementById(users).offsetHeight;
-		//alert(altura_users);
-		
+		var user = document.getElementById(users);
+		var altura = document.getElementById("respuesta").offsetHeight/2+"px";
+		var altura_users = document.getElementById(users).offsetHeight;
 		user.style.transition = "height 1s";
+
 		if(altura_users!=0){
 			user.style.height= 0;
-			
 			if(user.id=="users"){
-				//document.getElementById('listado').className += " lista-chats-view";
 				$( '#listado' ).fadeOut('fast');
 			}else{
 
-			}
-
-					
+			}			
 		}else{
 			
 			if(user.id=="users"){
 				document.getElementById('users2').style.height= 0;
 				$( '#listado' ).fadeIn('fast');
-				//document.getElementById('users2').style.display= 'none';
+
 			}else{
 				document.getElementById('users').style.height= 0;
 				$( '#listado' ).fadeOut('fast');
-				//document.getElementById('users2').style.display= 'none';
-
 			}
+
 			user.style.height= altura;
-			$( '#'+users ).fadeIn();
-
-			
-		}
-
-		
+			$( '#'+users ).fadeIn();		
+		}	
 	}
 
 	function presionar(boton){
