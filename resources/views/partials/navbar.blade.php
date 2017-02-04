@@ -46,6 +46,7 @@
         margin-top: 8%;
         background: rgba(0,0,0,0.5);
         padding:50px;
+        padding-top: 20px;
         color: #0F0;
         font-family: matrix;
 
@@ -131,8 +132,10 @@
         
         background: rgba(0,255,0,0.2);
         transition: height 1s;
-        height: 1px;
-        display: none;
+        position: relative;
+
+        
+        
        
 
       }
