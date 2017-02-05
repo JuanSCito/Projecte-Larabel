@@ -199,11 +199,14 @@
        }
       
       .chat .respuesta {
+        font-family: 'Times new roman';
+        font-size: 17px;
          height: 430px;
          background: rgba(0,255,0,0.2);
          overflow-y: scroll;
          display: none;
          margin-bottom: 10px;
+         color: white;
          
 
       }

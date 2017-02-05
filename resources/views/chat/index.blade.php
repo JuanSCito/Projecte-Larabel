@@ -39,7 +39,8 @@
 						  <label for="" class="titulo">Conversacion:</label>
 						  <div class="respuesta" id="respuesta" >
 							@foreach( $arrayMesage as $key => $mesage )
-									<p>{{$mesage->text}}</p>
+									{{-- quitamos la fecha y dehamos la hora--}}
+									<p>{{substr($mesage->created_at,11)}}&nbsp;&nbsp;{{$mesage->text}}</p>
 							@endforeach
 						  
 						 </div>
