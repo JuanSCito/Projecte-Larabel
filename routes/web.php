@@ -13,9 +13,9 @@
 
 
 
-Route::get('/', 'HomeController@getHome');
+	Route::get('/', 'HomeController@getHome');
 
-Route::group(['middleware' => 'auth'], function() {
+	Route::group(['middleware' => 'auth'], function() {
     
     // ...
     Route::get('/chat', 'ChatController@getIndex');

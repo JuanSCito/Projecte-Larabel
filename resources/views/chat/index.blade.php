@@ -17,7 +17,8 @@
 						  	 
 								<div id="listado">
 								@foreach( $arrayChats as $key => $chat )
-									<p>{{$chat->name}}</p>
+									<button onmouseup="btn_presion(this)" onmousedown="btn_dePresion(this)" onmouseover="btn_hover(this)" onmouseout="btn_out(this)">{{$chat->name}}</button>
+									<br>
 									@endforeach
 
 								</div>
@@ -110,6 +111,29 @@
 		var boton = document.getElementById(boton);
 
 
+	}
+
+	function btn_presion(element) {
+
+		
+		//element.style.background = "rgba(55,71,79,0.8)";
+		element.style.background = "rgba(55,71,80,0.9)";
+		
+	}
+
+	function btn_dePresion(element) {
+
+		//element.style.background = "rgba(55,71,80,0.9)";
+		element.style.background = "rgba(55,71,79,0.8)";
+	}
+
+	function btn_hover(element) {
+
+		element.style.background = "rgba(55,71,80,0.9)";
+	}
+
+	function btn_out(element) {
+		element.style.background = "rgba(55,71,79,0.8)";
 	}
 
 

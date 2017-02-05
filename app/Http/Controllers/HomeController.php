@@ -32,6 +32,10 @@ class HomeController extends Controller
         //$arrayPeliculas = Movie::all();
         $arrayChats = Chat::all();
         $arrayMesage = Mesage::all();
-        return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage));
+        
+            // El usuario está correctamente autenticado
+            return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage));
+
+        
     }
 }

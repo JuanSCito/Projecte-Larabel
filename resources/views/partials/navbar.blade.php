@@ -21,16 +21,52 @@
       /*FINAL EFECTO MATRIX*/
       
       
-        
+      /*ESTILOS login*/
+      label {
+        font-family: matrix;
+        font-size: 30px;
+      }
+      .panel.panel-default {
+          background: rgba(0,0,0,0.5);
+          border-color: #0F0;
+      }
+      .container.login {
+          margin-top: 50px;
+      }
+      .login .panel-heading {
+        background: rgba(55,71,79,0.8);
+        color: white;
+        font-family: matrix;
+        font-size: 35px;
+        letter-spacing: 0.4em;
+        border-color: #0F0;
+        margin-bottom: 25px;
+      }
+      .login .btn.btn-link{
+        font-family: 'Times new roman';
+        font-size: 20px;
+        color: white;
+        text-align: center;
+      }
+      .login .btn.btn-primary {
+        background:  rgba(55,71,79,0.8); 
+        border-color: #0F0;
+        width: 100%;
+      }
+      .login .form-group{
+        text-align: center;
+      }
+
+      /*FINAL ESTILO LOGIN*/
 
       .container-fluid {
-        top:;
+        top: 50px;
         z-index: 1000;
         background: transparent;
         margin:0;
         padding-left:0;
      
-
+      
       }
       /*FINAL ESTILOS MASTER BLADE*/
 
@@ -77,7 +113,7 @@
       }
 
       * {
-        color: #0F0;
+        /*color: #0F0;*/
       }
 
 
@@ -134,9 +170,27 @@
         transition: height 1s;
         position: relative;
         overflow-y: auto;
+        font-family: 'Times new roman';
+        font-size: 18px;
+        color: white;
+
         /*height: 0;
         display: none;*/
 
+      }
+      .lista-chats button{
+        padding: 5px;
+        margin: 0;
+        padding-left: 10px;
+        width: 100%;
+        text-align: left;
+        background: rgba(55,71,79,0.8);
+        border: 0;
+        border-bottom: 1px solid black;
+      }
+
+      .lista-chats button:hover{
+       /* background: rgba(55,71,80,0.9);*/
       }
        
        .lista-chats-view  {
@@ -224,7 +278,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
 
       <ul class="nav navbar-nav">
-       
+       @if( Auth::check() )
         <li  {{ Request::is('*') && !Request::is('chat/crear') ? ' class=active':''}}>
           <a href="{{url('/')}}">Home</a>
         </li>
@@ -234,16 +288,16 @@
         <li {{ Request::is('chat/crear') ? ' class=active' : ''}}>
             <a href="{{url('/chat/crear')}}">Crear chat</a>
         </li>
-      
+      @endif
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
        @if(Auth::guest())
         <li {{ Request::is('user/registro') ? ' class=active' : ''}}>
-          <a href="{{url('user/registro')}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+          <a href="{{url('/register')}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
         </li>
-         <li {{ Request::is('auth/login') ? ' class=active' : ''}}>
-          <a href="{{url('/auth/login')}}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+         <li  class='active'>
+          <a href="{{ url('/login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
         </li>
         @else
         
