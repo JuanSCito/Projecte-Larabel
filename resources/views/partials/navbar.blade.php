@@ -220,9 +220,11 @@
       </button>
       <a class="navbar-brand" href="{{url('/')}}">WebSiteName</a>
     </div>
-    @if( true || Auth::check() )
+    
     <div class="collapse navbar-collapse" id="myNavbar">
+
       <ul class="nav navbar-nav">
+       
         <li  {{ Request::is('*') && !Request::is('chat/crear') ? ' class=active':''}}>
           <a href="{{url('/')}}">Home</a>
         </li>
@@ -232,18 +234,43 @@
         <li {{ Request::is('chat/crear') ? ' class=active' : ''}}>
             <a href="{{url('/chat/crear')}}">Crear chat</a>
         </li>
+      
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
+       @if(Auth::guest())
         <li {{ Request::is('user/registro') ? ' class=active' : ''}}>
           <a href="{{url('user/registro')}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
         </li>
-         <li{{ Request::is('auth/login') ? ' class=active' : ''}}>
+         <li {{ Request::is('auth/login') ? ' class=active' : ''}}>
           <a href="{{url('/auth/login')}}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
         </li>
-        @endif
-        <li {{ Request::is('user/account') ? ' class=active' : ''}}>
-          <a href="{{url('user/account')}}"><span class="glyphicon glyphicon-user"></span>Cuenta</a>
-        </li>    
+        @else
+        
+         <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="{{ url('/logout') }}"
+                            onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+          </li>
+        
+          <li {{ Request::is('user/account') ? ' class=active' : ''}}>
+            <a href="{{url('user/account')}}"><span class="glyphicon glyphicon-user"></span>Cuenta</a>
+          </li>
+          @endif    
       </ul>
     </div>
   </div> 

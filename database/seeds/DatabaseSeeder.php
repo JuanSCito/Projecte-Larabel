@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Mesage;
 use App\Chat;
 use App\Listachat;
+use App\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -41,6 +42,22 @@ class DatabaseSeeder extends Seeder
     	)
     );
 
+
+    private $arrayUsers = array(
+    array(
+
+      'name' => 'Albert', 
+      'email' => 'albert_sanchezbcn@hotmail.com', 
+      'password' => '13246589'
+    ),
+    array(
+
+      'name' => 'Jordi', 
+      'email' => 'jordi_sanchezbcn@hotmail.com', 
+      'password' => '13246589'
+    )
+  );
+
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
@@ -52,7 +69,10 @@ class DatabaseSeeder extends Seeder
   		$this->command->info('Tabla Chat inicializada con datos!');
 
   		self::seedListachat();
-  		$this->command->info('Tabla Chat inicializada con datos!');
+  		$this->command->info('Tabla ListaChat inicializada con datos!');
+
+       self::seedUsers();
+      $this->command->info('Tabla usuarios inicializada con datos!');
 
   		/*self::seedListachat();
   		$this->command->info('Tabla ListaChat inicializada con datos!');
@@ -66,7 +86,7 @@ class DatabaseSeeder extends Seeder
 		    $m = new Mesage;
 		    $m->text = $mesage['text'];
 		    $m->save();
-		}
+		  }
 
     }
 
@@ -77,7 +97,7 @@ class DatabaseSeeder extends Seeder
 		    $m = new Chat;
 		    $m->name = $chat['name'];
 		    $m->save();
-		}
+		  }
 
     }
 
@@ -89,7 +109,19 @@ class DatabaseSeeder extends Seeder
 		    $m->id_mesage = $Lchat['id_mesage'];
 		    $m->id_chat = $Lchat['id_chat'];
 		    $m->save();
-		}
+		  }
+
+    }
+    public function seedUsers(){
+
+      DB::table('users')->delete();
+      foreach( $this->arrayUsers as $User ) {
+        $u = new User;
+        $u->name = $User['name'];
+        $u->email = $User['email'];
+        $u->password = bcrypt($User['password']);
+        $u->save();
+      }
 
     }
 }

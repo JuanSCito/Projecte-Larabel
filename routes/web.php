@@ -15,25 +15,41 @@
 
 Route::get('/', 'HomeController@getHome');
 
-Route::get('/chat', 'ChatController@getIndex');
+Route::group(['middleware' => 'auth'], function() {
+    
+    // ...
+    Route::get('/chat', 'ChatController@getIndex');
 
-Route::get('/auth/login', function () {
+    Route::get('/chat/show', 'ChatController@getShow');
+
+	Route::get('/chat/crear', 'ChatController@getCrear');
+
+	Route::get('/chat/edit/{id}', 'ChatController@getEdit');
+
+	Route::get('/user/account', 'ChatController@getAccount');
+});
+
+
+
+/*Route::get('/auth/login', function () {
     return view('auth.login');
 });
-
-Route::get('/user/registro', function () {
+*/
+/*Route::get('/user/registro', function () {
     return view('user.registro');
 });
+*/
 
-Route::get('/user/account', 'ChatController@getAccount');
-
+/*
 Route::get('/logout', function () {
     return 'Final de Sessio';
 });
+*/
 
-Route::get('/chat/show', 'ChatController@getShow');
 
-Route::get('/chat/crear', 'ChatController@getCrear');
 
-Route::get('/chat/edit/{id}', 'ChatController@getEdit');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
 
