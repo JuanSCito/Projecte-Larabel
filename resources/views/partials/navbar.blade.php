@@ -68,6 +68,10 @@
      
       
       }
+
+      .login label {
+        color: #0F0;
+      }
       /*FINAL ESTILOS MASTER BLADE*/
 
       /*ESTILOS HOME BLADE*/

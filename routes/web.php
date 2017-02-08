@@ -27,6 +27,8 @@
 	Route::get('/chat/edit/{id}', 'ChatController@getEdit');
 
 	Route::get('/user/account', 'ChatController@getAccount');
+
+	Route::post('/chat/store', 'chatStore@store');
 });
 
 

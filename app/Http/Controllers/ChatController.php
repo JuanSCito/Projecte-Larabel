@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Chat;
 use App\Mesage;
 
+
 class ChatController extends Controller
 {
     //
@@ -13,7 +14,8 @@ class ChatController extends Controller
 	{
 		$arrayChats = Chat::all();
 		$arrayMesage = Mesage::all();
-   	 	return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage));
+		$name = " ";
+   	 	return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage,'name'=>$name));
 	}
     public function getShow()
 	{

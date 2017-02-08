@@ -34,9 +34,10 @@
 					
 				</div>
 				<div class="col-lg-9 col-md-8 col-sm-12  centered">
-					<form action="">
+					<form method="POST" action="{{ url('/chat/store') }}" id="formu">
+					{{ csrf_field() }}
 						 <div class="form-group">
-						  <label for="" class="titulo">Conversacion:</label>
+						  <label for="" class="titulo">Conversacion  {{$arrayChats[0]->name}}</label>
 						  <div class="respuesta" id="respuesta" >
 							@foreach( $arrayMesage as $key => $mesage )
 									{{-- quitamos la fecha y dehamos la hora--}}
@@ -45,17 +46,20 @@
 						  
 						 </div>
 
-						 <div class="form-group">
+						 <div class="form-group" >
+						 
+						  
 							  <label for="comment"></label>
 
 							  
 							  <div class="col-sm-12 col-lg-10  textarea">
-									<textarea class="form-control" rows="2" id=""></textarea>		
+									<textarea class="form-control" name="nombre" rows="2" form="formu">{{$name}}</textarea>
+											
 							  </div>	
 							  <div class="col-sm-12 col-lg-2 textarea-boton">
 									<input type="submit" class="btn btn-default chat-boton" value="Entrar">		
 							  </div>	
-
+						
 						  </div>		
 						
 					</form>
