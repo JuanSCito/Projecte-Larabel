@@ -13,9 +13,10 @@ class ChatController extends Controller
     public function getIndex()
 	{
 		$arrayChats = Chat::all();
-		$arrayMesage = Mesage::all();
+		$arrayMesage = array();
 		$name = " ";
-   	 	return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage,'name'=>$name));
+		$chatId="";
+   	 	return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage,'name'=>$name,'chatId'=>$chatId));
 	}
     public function getShow()
 	{

@@ -31,10 +31,11 @@ class HomeController extends Controller
     public function getHome(){
         //$arrayPeliculas = Movie::all();
         $arrayChats = Chat::all();
-        $arrayMesage = Mesage::all();
+        $arrayMesage = array();
         $name = "";
+        $chatId="";
             // El usuario está correctamente autenticado
-            return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage,'name'=>$name));
+            return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage,'name'=>$name,'chatId'=>$chatId));
 
         
     }

@@ -15,13 +15,20 @@
 						  </label>
 						  <div class="lista-chats" id="users">
 						  	 
+						  	 
 								<div id="listado">
 								@foreach( $arrayChats as $key => $chat )
-									<button onmouseup="btn_presion(this)" onmousedown="btn_dePresion(this)" onmouseover="btn_hover(this)" onmouseout="btn_out(this)">{{$chat->name}}</button>
+								<form method="POST" action="{{ url('/chat/store') }}" >
+								{{ csrf_field() }}
+									<button type="submit" onmouseup="btn_presion(this)" onmousedown="btn_dePresion(this)" onmouseover="btn_hover(this)" onmouseout="btn_out(this)">{{$chat->name}}</button>
+									<input type="hidden" name="chatId" value="{{$chat->id}}">
+								</form>
+										{{$chat->id}}
 									<br>
 									@endforeach
 
 								</div>
+							
 						  </div>
 
 					</div>
@@ -34,8 +41,7 @@
 					
 				</div>
 				<div class="col-lg-9 col-md-8 col-sm-12  centered">
-					<form method="POST" action="{{ url('/chat/store') }}" id="formu">
-					{{ csrf_field() }}
+					
 						 <div class="form-group">
 						  <label for="" class="titulo">Conversacion  {{$arrayChats[0]->name}}</label>
 						  <div class="respuesta" id="respuesta" >
@@ -51,18 +57,21 @@
 						  
 							  <label for="comment"></label>
 
-							  
-							  <div class="col-sm-12 col-lg-10  textarea">
-									<textarea class="form-control" name="nombre" rows="2" form="formu">{{$name}}</textarea>
-											
-							  </div>	
-							  <div class="col-sm-12 col-lg-2 textarea-boton">
-									<input type="submit" class="btn btn-default chat-boton" value="Entrar">		
-							  </div>	
+							  <form method="POST" action="{{ url('/chat/store') }}" id="formu">
+								{{ csrf_field() }}
+								  <div class="col-sm-12 col-lg-10  textarea">
+										<textarea class="form-control" name="nombre" rows="2" form="formu">{{$name}}</textarea>
+										<input type="hidden" name="chatId" value="{{$chatId}}">
+												
+								  </div>	
+								  <div class="col-sm-12 col-lg-2 textarea-boton">
+										<input type="submit" class="btn btn-default chat-boton" value="Entrar">		
+								  </div>
+							  </form>	
 						
 						  </div>		
 						
-					</form>
+					
 				</div>
 			</div>
 	</div>
@@ -70,6 +79,15 @@
 
   
 	$( '#listado' ).fadeOut('fast');
+	//CODIGO JQUERY PARA AUTOSCROLL DEL CHAT
+	$( document ).ready(function() {
+		//alert('hola');
+		var alturas = $('#respuesta').prop("scrollHeight");
+		//alert(alturas);
+		$("#respuesta").scrollTop(alturas);
+		
+});
+	
 	function desplegar(users,boton){
 		
 
