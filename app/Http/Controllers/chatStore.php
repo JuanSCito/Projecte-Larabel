@@ -17,7 +17,11 @@ class chatStore extends Controller
 	{	
 		
 		$arrayChats = Chat::all();
-		$arrayMesage = Mesage::all();
+		$arrayMesage = array();
+		$chatId="";
+		$name ="";
+		
+		
 
 		if($request->isMethod("post") && $request->has("nombre") && $request->input("nombre")!="" && $request->input("chatId")!=""){
 			//echo 'HOLAAAAAAAAAAA';
@@ -34,12 +38,17 @@ class chatStore extends Controller
 			    ['id_mesage' => $id,'id_chat'=> $idChat,'created_at'=> $data,'updated_at'=> $data]
 			);
 			//echo 'id2'.$id2;
-
+			$arrayMesage = Mesage::all();
 			
 		}else{
-			$name ="";
+			//echo 'HOLAAAAAAAAAAA';
+			//return redirect('/chat');
+
+			
 			//echo 'adiossssssssssssss';
-			$arrayMesage = "";
+			
+			//$chatId="";
+
 
 
 		}
@@ -63,7 +72,10 @@ class chatStore extends Controller
 	        $arrayMesage = $Chat;
 
 		}else{
-			$arrayMesage= "";
+
+			//$arrayMesage= "";
+			//$arrayMesage= array();
+			
 		}
 
 		

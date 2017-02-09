@@ -43,12 +43,24 @@
 				<div class="col-lg-9 col-md-8 col-sm-12  centered">
 					
 						 <div class="form-group">
-						  <label for="" class="titulo">Conversacion  {{$arrayChats[0]->name}}</label>
+						  <label for="" class="titulo">Conversacion  
+							  @if ($chatId!="")
+							  	{{$arrayChats[$chatId-1]->name}}
+							  @else
+
+							  @endif
+						  </label>
 						  <div class="respuesta" id="respuesta" >
-							@foreach( $arrayMesage as $key => $mesage )
-									{{-- quitamos la fecha y dehamos la hora--}}
-									<p>{{substr($mesage->created_at,11)}}&nbsp;&nbsp;{{$mesage->text}}</p>
-							@endforeach
+						  @if ($chatId=="")
+						  	 <p class="no-chat" id="no-chat"><span  class="corchete">[[</span>No Chat Selected <span class="corchete">]]</span></p>
+   						  @else
+								@foreach( $arrayMesage as $key => $mesage )
+										{{-- quitamos la fecha y dehamos la hora--}}
+										<div>{{substr($mesage->created_at,11)}}&nbsp;&nbsp;{{$mesage->text}}</div>
+								@endforeach
+						  
+
+						  @endif
 						  
 						 </div>
 
@@ -79,12 +91,16 @@
 
   
 	$( '#listado' ).fadeOut('fast');
+	$( '#no-chat' ).fadeIn('slow');
 	//CODIGO JQUERY PARA AUTOSCROLL DEL CHAT
 	$( document ).ready(function() {
 		//alert('hola');
 		var alturas = $('#respuesta').prop("scrollHeight");
 		//alert(alturas);
 		$("#respuesta").scrollTop(alturas);
+
+		
+
 		
 });
 	
@@ -158,6 +174,8 @@
 	function btn_out(element) {
 		element.style.background = "rgba(55,71,79,0.8)";
 	}
+
+
 
 
 
