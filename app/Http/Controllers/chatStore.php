@@ -19,7 +19,7 @@ class chatStore extends Controller
 		$arrayChats = Chat::all();
 		$arrayMesage = Mesage::all();
 
-		if($request->isMethod("post") && $request->has("nombre") && $request->input("nombre")!=""){
+		if($request->isMethod("post") && $request->has("nombre") && $request->input("nombre")!="" && $request->input("chatId")!=""){
 			//echo 'HOLAAAAAAAAAAA';
 			$data = date('Y-m-d H:i:s');
 			$name =$request->input("nombre");
