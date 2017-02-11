@@ -15,75 +15,52 @@ class chatStore extends Controller
 
     public function store(Request $request)	
 	{	
-		
+		//INICIALITZEM VAIRABLES
 		$arrayChats = Chat::all();
 		$arrayMesage = array();
 		$chatId="";
 		$name ="";
 		
-		
+		//OBTENIM SI CHATID ESTA BUIT O NO
+		$chatId_buit = $request->input("chatId")!="";
 
-		if($request->isMethod("post") && $request->has("nombre") && $request->input("nombre")!="" && $request->input("chatId")!=""){
-			//echo 'HOLAAAAAAAAAAA';
+		//SEMPRE QUE ENVIEM ALGO PER FORMULARI TIPO POST AMB CONTINGUT I VAIG IDENTIFICAT EN UN CHAT EN CONCRET ENTREM
+		if($request->isMethod("post") && $request->has("nombre") && $request->input("nombre")!="" && $chatId_buit){
+			//RECOLLIM DATA, DADES FORM, Y EL ID DE CHAT
 			$data = date('Y-m-d H:i:s');
 			$name =$request->input("nombre");
 			$idChat= $request->input("chatId");
-			//INSERT GET ID DUVUELVE EL ID DEL INSERT REALIDZADO
+			//INSERT GET ID, DESPRES DE FER AQUEST INSERT EN LA VARIABLE $ID TENIM EL ID DEL INSERT 
 			$id=DB::table('mesages')->insertGetId(
 			    ['text' => $name,'created_at'=> $data,'updated_at'=> $data]
 			);
-			//echo 'id'.$id.'data'. $data.'idchat'. $idChat;
-			//AHORA INSERTAMOS EN LA LISTA CHAT USANDO EL ID DE CHAT Y EL ID DEL MENSAJE
+			//AHORA ARA INSERTEMA LA LLISTA CHAT, EL ID DE CHAT, ID DE MISSATGE
 			$id2= DB::table('listachat')->insertGetId(
 			    ['id_mesage' => $id,'id_chat'=> $idChat,'created_at'=> $data,'updated_at'=> $data]
 			);
-			//echo 'id2'.$id2;
+			//ACTUALITZEM EL MISSATGES 
 			$arrayMesage = Mesage::all();
-			
-		}else{
-			//echo 'HOLAAAAAAAAAAA';
-			//return redirect('/chat');
+
 
 			
-			//echo 'adiossssssssssssss';
-			
-			//$chatId="";
-
-
-
 		}
 
-		
-
-		if($request->isMethod("post") && $request->has("chatId")){
+		//SEMPRE QUE EXISTEIXI EL CHATID I A MÉS NO ESTIGUI BUID
+		if( $request->has("chatId") && $chatId_buit){
 
 			$chatId =$request->input("chatId");
-			//DEVOLVEMOS LOS MENSAJES QUE COINCIDEN EL ID DE CHAT EN EL QUE ESTAMOS HABLANDO
+			//FEM UN JOIN PER OBTENIR MISSATGES AMB LE MATEIX CHAT ID I ID DE CHAT
 			$Chat = DB::table('mesages')
             ->join('listachat', function ($join)use ($chatId) {
             	$join->on('mesages.id', '=', 'listachat.id_mesage')
                  ->where('id_chat', '=', $chatId);
             })
             ->get();
-
-            
-
-			
 	        $arrayMesage = $Chat;
 
-		}else{
-
-			//$arrayMesage= "";
-			//$arrayMesage= array();
-			
 		}
 
-		
-		//$name = $request->input('nombre');
-		//alert($name);
-
-
-    	return  view('chat.index',array('name'=>$name,'arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage,'chatId'=>$chatId));//view('chat.index',array('name' => $name));
+    	return  view('chat.index',array('name'=>$name,'arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage,'chatId'=>$chatId));
 
 	}
 }

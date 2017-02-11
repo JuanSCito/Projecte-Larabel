@@ -462,9 +462,7 @@
 
       <ul class="nav navbar-nav">
        @if( Auth::check() )
-        <li  {{ Request::is('*') && !Request::is('chat/crear') ? ' class=active':''}}>
-          <a href="{{url('/')}}">Home</a>
-        </li>
+        
         <li {{ Request::is('chat/show')? ' class=active':''}}>
           <a  href="{{url('/chat')}}">CHAT</a>
         </li>

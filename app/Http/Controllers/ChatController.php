@@ -12,14 +12,15 @@ use App\User;
 
 class ChatController extends Controller
 {
-    //
+    
     public function getIndex()
 	{
+		//INICIATLITZEM VARIABLES
 		$arrayChats = Chat::all();
 		$arrayMesage = array();
-		$name = " ";
+		$name = "";
 		$chatId="";
-	
+		//ENVIEM VARIABLES AL CHAT
    	 	return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage,'name'=>$name,'chatId'=>$chatId));
 	}
     public function getShow()

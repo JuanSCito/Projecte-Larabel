@@ -29,14 +29,13 @@ class HomeController extends Controller
     }
 
     public function getHome(){
-        //$arrayPeliculas = Movie::all();
+        //INICIALITZEM VARIABLES
         $arrayChats = Chat::all();
         $arrayMesage = array();
         $name = "";
         $chatId="";
-            // El usuario está correctamente autenticado
-            return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage,'name'=>$name,'chatId'=>$chatId));
-
-        
+        //RETORNEM AL HOME QUE ES EL CHAT
+        return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage,'name'=>$name,'chatId'=>$chatId));
+  
     }
 }
