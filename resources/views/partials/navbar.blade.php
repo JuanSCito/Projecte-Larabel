@@ -210,15 +210,15 @@
          overflow-y: scroll;
          display: none;
          margin-bottom: 10px;
-         color: white;
+         color: #90a4ae;
          font-weight: normal;
 
          
 
       }
       .respuesta div {
-        background: gray;
-        padding: 15px;
+        
+        padding: 5px;
         width: auto;
         margin-bottom: 10px;
       }
@@ -231,11 +231,16 @@
 
        }
 
-       .textarea {
+        .textarea {
 
          padding-left:0;
          margin-bottom: 10px;
+         font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        
 
+       }
+       .textarea textarea {
+         font-size: 17px;
        }
 
        .textarea-boton {

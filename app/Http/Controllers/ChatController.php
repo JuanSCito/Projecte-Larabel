@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Chat;
 use App\Mesage;
+use App\User;
+
+
 
 
 class ChatController extends Controller
@@ -16,6 +19,7 @@ class ChatController extends Controller
 		$arrayMesage = array();
 		$name = " ";
 		$chatId="";
+	
    	 	return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage,'name'=>$name,'chatId'=>$chatId));
 	}
     public function getShow()
@@ -34,4 +38,6 @@ class ChatController extends Controller
 	{
     	return view('user.account');
 	}
+
+	
 }

@@ -4,6 +4,8 @@
 	<div class="col-lg-12 col-md-12 col-sm-12 chat centered" >
 		<div class="col-lg-12 col-md-12 col-sm-12  centered">		
 			<h1>MatrixLogic</h1>
+
+		
 				<div class="col-lg-3 col-md-4 col-sm-12  centered">	
 					<div>
 						
@@ -23,8 +25,8 @@
 									<button type="submit" onmouseup="btn_presion(this)" onmousedown="btn_dePresion(this)" onmouseover="btn_hover(this)" onmouseout="btn_out(this)">{{$chat->name}}</button>
 									<input type="hidden" name="chatId" value="{{$chat->id}}">
 								</form>
-										{{$chat->id}}
-									<br>
+										
+									
 									@endforeach
 
 								</div>
@@ -52,7 +54,9 @@
 						  </label>
 						  <div class="respuesta" id="respuesta" >
 						  @if ($chatId=="")
+						  
 						  	 <p class="no-chat" id="no-chat"><span  class="corchete">[[</span>No Chat Selected <span class="corchete">]]</span></p>
+						  	 {{--Para imprimir datos de usuario Auth::user()->email--}}
    						  @else
 								@foreach( $arrayMesage as $key => $mesage )
 										{{-- quitamos la fecha y dehamos la hora--}}
@@ -67,7 +71,7 @@
 						 <div class="form-group" >
 						 
 						  
-							  <label for="comment"></label>
+							  
 
 							  <form method="POST" action="{{ url('/chat/store') }}" id="formu">
 								{{ csrf_field() }}

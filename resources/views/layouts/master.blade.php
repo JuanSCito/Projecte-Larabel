@@ -55,7 +55,7 @@
 
 
     var Tconversa = document.getElementById("respuesta").offsetHeight/2.6+"px";
-    var Lconversa = document.getElementById("respuesta").offsetWidth/12+"px";
+    var Lconversa = document.getElementById("respuesta").offsetWidth/6+"px";
     //alert(Tconversa);
     var noChat = document.getElementById("no-chat");
     noChat.style.top = Tconversa;
