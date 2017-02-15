@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Chat;
 use App\Mesage;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -31,11 +32,11 @@ class HomeController extends Controller
     public function getHome(){
         //INICIALITZEM VARIABLES
         $arrayChats = Chat::all();
+        $arrayUsers = User::all();
         $arrayMesage = array();
-        $name = "";
         $chatId="";
         //RETORNEM AL HOME QUE ES EL CHAT
-        return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage,'name'=>$name,'chatId'=>$chatId));
+        return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage,'chatId'=>$chatId,'arrayUsers'=>$arrayUsers));
   
     }
 }

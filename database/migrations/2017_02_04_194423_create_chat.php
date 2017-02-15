@@ -16,6 +16,7 @@ class CreateChat extends Migration
         Schema::create('chat', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',20);
+            $table->string('password')->nullable()->default(null);
             $table->timestamps();
         });
     }

@@ -178,8 +178,8 @@
         font-size: 18px;
         color: white;
 
-        /*height: 0;
-        display: none;*/
+       
+        display: block;
 
       }
       .lista-chats button{
@@ -287,6 +287,10 @@
       }
       .corchete {
         font-family: Verdana;
+      }
+
+      form {
+        margin-bottom: 0;
       }
 
       /*PÁGINA CHAT INDEX*/

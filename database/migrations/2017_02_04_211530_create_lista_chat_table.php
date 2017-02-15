@@ -22,6 +22,7 @@ class CreateListaChatTable extends Migration
             //$table->foreign('id_mesage')->references('id')->on('mesage');
             //$table->foreign('id_chat')->references('id')->on('chat');
             $table->timestamps();
+         
             
       
         });

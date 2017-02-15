@@ -24,10 +24,12 @@ class DatabaseSeeder extends Seeder
     );
     private $arrayChat = array (
     	array(
-    		'name' => 'Hacking'
+    		'name' => 'Hacking',
+        'password' => '13246589'
     	),
     	array(
-    		'name' => 'Exploits'
+    		'name' => 'Exploits',
+        'password' => '13246589'
     	)
     );
 
@@ -46,14 +48,20 @@ class DatabaseSeeder extends Seeder
     private $arrayUsers = array(
     array(
 
-      'name' => 'Albert', 
+      'nick' => 'albertri', 
       'email' => 'albert_sanchezbcn@hotmail.com', 
       'password' => '13246589'
     ),
     array(
 
-      'name' => 'Jordi', 
+      'nick' => 'ReAs', 
       'email' => 'jordi_sanchezbcn@hotmail.com', 
+      'password' => '13246589'
+    ),
+    array(
+
+      'nick' => 'nIghtmare', 
+      'email' => 'albert.sanchezbcn@gmail.com', 
       'password' => '13246589'
     )
   );
@@ -96,6 +104,7 @@ class DatabaseSeeder extends Seeder
     	foreach( $this->arrayChat as $chat ) {
 		    $m = new Chat;
 		    $m->name = $chat['name'];
+        $m->password = bcrypt($chat['password']);
 		    $m->save();
 		  }
 
@@ -117,7 +126,7 @@ class DatabaseSeeder extends Seeder
       DB::table('users')->delete();
       foreach( $this->arrayUsers as $User ) {
         $u = new User;
-        $u->name = $User['name'];
+        $u->nick = $User['nick'];
         $u->email = $User['email'];
         $u->password = bcrypt($User['password']);
         $u->save();

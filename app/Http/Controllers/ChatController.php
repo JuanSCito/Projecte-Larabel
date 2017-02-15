@@ -18,10 +18,10 @@ class ChatController extends Controller
 		//INICIATLITZEM VARIABLES
 		$arrayChats = Chat::all();
 		$arrayMesage = array();
-		$name = "";
+		$arrayUsers = User::all();
 		$chatId="";
 		//ENVIEM VARIABLES AL CHAT
-   	 	return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage,'name'=>$name,'chatId'=>$chatId));
+   	 	return view('chat.index',array('arrayChats' => $arrayChats,'arrayMesage' => $arrayMesage,'chatId'=>$chatId,'arrayUsers'=>$arrayUsers));
 	}
     public function getShow()
 	{

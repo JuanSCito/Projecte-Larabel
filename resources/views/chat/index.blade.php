@@ -20,9 +20,18 @@
 						  	 
 								<div id="listado">
 								@foreach( $arrayChats as $key => $chat )
-								<form method="POST" action="{{ url('/chat/store') }}" >
+								<form method="POST" action="{{ url('/chat/store') }}"  >
 								{{ csrf_field() }}
-									<button type="submit" onmouseup="btn_presion(this)" onmousedown="btn_dePresion(this)" onmouseover="btn_hover(this)" onmouseout="btn_out(this)">{{$chat->name}}</button>
+									<button type="submit" onmouseup="btn_presion(this)" onmousedown="btn_dePresion(this)" onmouseover="btn_hover(this)" onmouseout="btn_out(this)">
+
+										<span class="align-middle">{{$chat->name}}</span>
+										@if($chat->password!=null)
+											<i style="float:right;color:#fff176;"class="fa fa-unlock-alt" aria-hidden="true"></i>
+										@else
+											<i style="float:right;color:#fff176;" class="fa fa-unlock" aria-hidden="true"></i>
+
+										@endif
+									</button>
 									<input type="hidden" name="chatId" value="{{$chat->id}}">
 								</form>
 										
@@ -35,10 +44,27 @@
 
 					</div>
 					<!--class="form-group"-->
-					<div  >
+					<div>
 						  <label for="comment" class="titulo">Users: <i class="fa fa-arrow-down" id="boton2" aria-hidden="true"  onclick="desplegar('users2','boton2')" onmouseup="presionar('boton2')" onmousedown="despresionar('boton2')" ></i>
 						  </label>
-						  <div class="lista-chats" id="users2"></div>
+						  <div class="lista-chats" id="users2">
+						  	<div id="listado2">
+
+							 @foreach( $arrayUsers as $key => $user )
+							
+								{{ csrf_field() }}
+									<button type="submit" onmouseup="btn_presion(this)" onmousedown="btn_dePresion(this)" onmouseover="btn_hover(this)" onmouseout="btn_out(this)">
+
+										<span class="align-middle">{{$user->nick}}</span>
+										
+									</button>
+									<input type="hidden" name="chatId" value="{{$chat->id}}">
+							
+							 @endforeach
+
+						  </div>
+						 </div>
+						 
 					</div>	
 					
 				</div>
@@ -47,7 +73,7 @@
 						 <div class="form-group">
 						  <label for="" class="titulo">Conversacion  
 							  @if ($chatId!="")
-							  	{{$arrayChats[$chatId-1]->name}}
+							  	<span style="color:white;">{{$arrayChats[$chatId-1]->name}}</span>
 							  @else
 
 							  @endif
@@ -60,7 +86,7 @@
    						  @else
 								@foreach( $arrayMesage as $key => $mesage )
 										{{-- quitamos la fecha y dehamos la hora--}}
-										<div>{{substr($mesage->created_at,11)}}&nbsp;&nbsp;{{$mesage->text}}</div>
+										<div>[{{substr($mesage->created_at,11)}}:::{{Auth::user()->nick}}]&nbsp;&nbsp;{{$mesage->text}}</div>
 								@endforeach
 						  
 
@@ -76,7 +102,7 @@
 							  <form method="POST" action="{{ url('/chat/store') }}" id="formu">
 								{{ csrf_field() }}
 								  <div class="col-sm-12 col-lg-10  textarea">
-										<textarea class="form-control" name="nombre" rows="2" form="formu">{{$name}}</textarea>
+										<textarea class="form-control" name="missatge" rows="2" form="formu"></textarea>
 										<input type="hidden" name="chatId" value="{{$chatId}}">
 												
 								  </div>	
@@ -90,17 +116,49 @@
 					
 				</div>
 			</div>
+
+<!-- PER IMPLEMENTAR, FINESTRA MODAL PER DEMANAR PASSWORD -->
+	<!--
+	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	  Launch demo modal
+	</button>
+	-->
+
+	<!-- Modal -->
+	<!--
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	      </div>
+	      <div class="modal-body">
+	        ...
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	-->
+<!--FINAL IMPLEMENTACIÓ FINESTRA MODAL PER DEMANAR PASSWORD-->
+
 	</div>
 	<script>
 
   
-	$( '#listado' ).fadeOut('fast');
+	$( '#listado' ).fadeIn('fast');
+	$( '#listado2' ).fadeOut('fast');
 	$( '#no-chat' ).fadeIn('slow');
 	//CODIGO JQUERY PARA AUTOSCROLL DEL CHAT
 	$( document ).ready(function() {
 		//alert('hola');
 		var alturas = $('#respuesta').prop("scrollHeight");
-		//alert(alturas);
+		//PER MANTENIR L'ESCROLL SEMPRE A LULTIM MISS
 		$("#respuesta").scrollTop(alturas);
 
 		
@@ -121,7 +179,7 @@
 			if(user.id=="users"){
 				$( '#listado' ).fadeOut('fast');
 			}else{
-
+				$( '#listado2' ).fadeOut('fast');
 			}			
 		}else{
 			
@@ -131,7 +189,7 @@
 
 			}else{
 				document.getElementById('users').style.height= 0;
-				$( '#listado' ).fadeOut('fast');
+				$( '#listado2' ).fadeIn('fast');
 			}
 
 			user.style.height= altura;
